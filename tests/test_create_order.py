@@ -58,7 +58,7 @@ class Test_Create_Order:
 
 
     @allure.title("Создание заказа с авторизацией и неверным хешем ингредиентов")
-    @allure.description("Проверка: заказ не создан, success=false")
+    @allure.description("Проверка: код 500")
     def test_create_order_with_auth_invalid_hash(self, registered_user):
         with allure.step("Получение токена"):
             token = registered_user["response"].json()["accessToken"]
@@ -117,7 +117,7 @@ class Test_Create_Order:
 
 
     @allure.title("Создание заказа без авторизации и с неверным хешем ингредиентов")
-    @allure.description("Проверка: заказ не создан, success=false")
+    @allure.description("Проверка: код 500")
     def test_create_order_without_auth_invalid_hash(self):
      
         with allure.step("Отправка POST-запроса с неверным хешем"):

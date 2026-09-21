@@ -1,5 +1,7 @@
 import random
 import string
+import requests
+from urls import Urls
 
 
 def generate_email():
@@ -14,3 +16,8 @@ def generate_password():
 def generate_name():
     return "User_" + "".join(random.choices(string.ascii_lowercase, k=6))
 
+def get_ingredients_hash():
+    """Получить список ингредиентов с сервера."""
+    response = requests.get(Urls.GET_INGREDIENTS)
+    data = response.json()["data"]
+    return [item["_id"] for item in data]

@@ -47,3 +47,5 @@ def delete_user_after_test():
 
     for token in tokens:
         requests.delete(Urls.DELETE_USER, headers={"Authorization": token})
+
+
